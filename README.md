@@ -1,7 +1,17 @@
 ```rust
         let mut serve = Serve::new();
 
+        //添加中间件
+        serve.router.use_middleware(|req|{
+            if req.url() == "tttt"{
+                Some("casd")
+            }else {
+                None
+            }
 
+        });
+        
+        // 添加路由
         serve.router.set_contentType(ContentType::ApplicationJson);
         serve.router.get("/get", "{\"name\":lzy}");
 
